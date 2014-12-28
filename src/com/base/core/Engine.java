@@ -55,12 +55,19 @@ public class Engine {
 	// if the engine will render the game
 	private boolean doRender = true;
 	
+	private double lastTime, currentTime, deltaTime;
+	
+	private double targetTime = 1/60;
+	
 	// the main game loop
 	private void gameLoop()
 	{
+		currentTime = Time.getTime();
 		isRunning = true;
 		while(isRunning)
 		{
+			lastTime = currentTime;
+			currentTime = Time.getTime();
 			if(doInput)
 				input();
 			if(doUpdate)
@@ -68,8 +75,21 @@ public class Engine {
 			if(doRender)
 				render();
 			
-			Window.capFps(60);
+			//Window.capFps(60);
+			
+			deltaTime = currentTime - lastTime;
+			System.out.println(deltaTime);
+			
+			try {
+				Thread.sleep((long) (targetTime - deltaTime));
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			Window.clearScreen();
+			
+			
 			if(Window.isCloseRequested())
 				isRunning = false;
 		}
@@ -151,5 +171,10 @@ public class Engine {
 	 */
 	public boolean hasRender() {
 		return doRender;
+	}
+	
+	public double getDeltaTime()
+	{
+		return deltaTime;
 	}
 }

@@ -12,8 +12,9 @@ public class SlideComponent extends GameComponent{
 	
 	public void update()
 	{
-		parentTransform.x += mx;
-		parentTransform.y += my;
-		parentTransform.z += mz;
+		parentTransform.x += mx * parentObject.engine.getDeltaTime();
+		parentTransform.y += my * parentObject.engine.getDeltaTime();
+		parentTransform.z += mz * parentObject.engine.getDeltaTime();
+		System.out.println(parentTransform.x);
 	}
 }

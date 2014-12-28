@@ -11,7 +11,8 @@ import com.base.core.components.*;
 public class Game extends AbstractGame{
 	public void init()
 	{
-		rootObject.addObject(new GameObject("world").setPosition(100, 100, 0)
-				.addComponent(new KeyboardMoveComponent()));
+		rootObject.addObject(new GameObject("world").setPosition(0, 0, 0)
+				.addComponent(new KeyboardMoveComponent()).addComponent(new TextureRenderComponent("photo", 100, 100))
+				.addComponent(new SlideComponent(80, 0, 0)));
 	}
 }
