@@ -20,7 +20,7 @@ public class GameComponent {
 	/**
 	 * enables or disables the component
 	 */
-	private boolean isEnabled = true;	
+	protected boolean isEnabled = true;	
 	
 	/**
 	 * the individual component name
